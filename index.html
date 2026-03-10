@@ -156,6 +156,8 @@ const url=new URLSearchParams(window.location.search);
 return url.get(p);
 }
 
+window.onload=function(){
+
 const serie=getParam("serie");
 const fecha=getParam("fecha");
 
@@ -170,7 +172,10 @@ const filas=data.split("\n").slice(1);
 
 filas.forEach(f=>{
 
-const c=f.split(";").map(x=>x.replace(/"/g,"").trim());
+// detecta si el CSV usa ; o ,
+const separador = f.includes(";") ? ";" : ",";
+
+const c=f.split(separador).map(x=>x.replace(/"/g,"").trim());
 
 if(c[0]==serie && c[1]==fecha){
 
@@ -185,7 +190,6 @@ document.getElementById("solicitante").innerText=c[5];
 
 });
 
-</script>
+}
 
-</body>
-</html>
+</script>
