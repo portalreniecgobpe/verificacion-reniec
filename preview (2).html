@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificación de documentos - RENIEC</title>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f6f8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .flatpickr-calendar {
+      background: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .flatpickr-current-month {display:none!important;}
+    .flatpickr-weekdaycontainer {display:none!important;}
+
+    .flatpickr-custom-header {
+      background-color: #00897b; 
+      color: #fff;
+      text-align: center;
+      padding: 5px 0;
+      text-transform: uppercase;
+      font-size: 0.8em;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .flatpickr-date-display {
+      background-color: #009688; 
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .flatpickr-days {padding:10px;}
+
+    .flatpickr-calendar .flatpickr-day.selected {
+      background-color:#009688;
+      border-color:#009688;
+    }
+
+    .flatpickr-calendar .flatpickr-day.today {
+      border-color:#009688;
+      color:#009688;
+    }
+
+    .flatpickr-calendar select{
+      border:1px solid #ccc;
+      border-radius:4px;
+      padding:5px;
+      color:#555;
+    }
+
+    .flatpickr-footer{
+      display:flex;
+      justify-content:flex-end;
+      padding:10px 15px;
+      border-top:1px solid #eee;
+      background:#fff;
+    }
+
+    .flatpickr-footer button{
+      background:none;
+      border:none;
+      color:#009688;
+      font-weight:bold;
+      text-transform:uppercase;
+      cursor:pointer;
+      margin-left:10px;
+      font-size:0.9em;
+    }
+  </style>
+</head>
+<body>
+
+<div style="background:#fff;padding:15px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ddd;">
+<div style="display:flex;align-items:center;gap:20px;">
+<div style="display:flex;align-items:center;gap:8px;">
+<img src="https://drive.google.com/thumbnail?id=1BZbs0ftkQzAElLsHkczTAx2UqI1Ic-EU&sz=w1000" style="height:45px;">
+<div style="color:#666;font-weight:bold;font-size:18px;">DNI<span style="color:#c92a2a;">e</span></div>
+</div>
+
+<div style="color:#2b579a;font-size:22px;border-left:1px solid #ccc;padding-left:20px;">
+PORTAL DEL <span style="font-weight:700;">CIUDADANO</span>
+</div>
+</div>
+
+<div style="color:#777;font-size:14px;">Bienvenido</div>
+</div>
+
+<div style="background-color:#337ab7;color:white;padding:12px 40px;font-size:16px;display:flex;align-items:center;gap:10px;">
+<span style="font-size:20px;">👤⚙️</span> Utilitarios DNIe
+</div>
+
+<div style="flex-grow:1;padding:40px 20px;display:flex;justify-content:center;align-items:flex-start;">
+<div style="width:100%;max-width:900px;background:#fff;border:1px solid #ddd;box-shadow:0 4px 15px rgba(0,0,0,0.05);border-radius:4px;">
+
+<div style="color:#337ab7;padding:25px 0;margin:0 40px;text-align:center;font-size:22px;font-weight:400;border-bottom:1px solid #2b579a;">
+Verificación de documentos emitidos virtualmente
+</div>
+
+<div style="padding:30px 40px 40px 40px;">
+
+<div style="display:flex;gap:60px;margin-bottom:35px;">
+
+<div style="flex:1;">
+<span style="display:block;font-size:12px;color:#888;font-weight:700;margin-bottom:10px;">Número de serie</span>
+<input id="serie" type="text" style="font-size:15px;color:#555;padding-bottom:8px;border:none;border-bottom:1px solid #2b579a;width:100%;background:transparent;">
+</div>
+
+<div style="flex:1;">
+<span style="display:block;font-size:12px;color:#888;font-weight:700;margin-bottom:10px;">Fecha de emisión</span>
+<input type="text" id="fecha-emision" style="font-size:15px;color:#555;padding-bottom:8px;border:none;border-bottom:1px solid #2b579a;width:100%;background:transparent;">
+</div>
+
+</div>
+
+<div style="background-color:#4a9b33;padding:16px 20px;margin-bottom:35px;color:#ffffff;font-size:15px;border-radius:2px;">
+<span>El presente documento ha sido emitido por el RENIEC.</span>
+</div>
+
+<table style="width:100%;border-collapse:collapse;font-size:14px;">
+<tbody>
+
+<tr>
+<td style="padding:16px 20px;width:35%;background-color:#2e6093;font-weight:700;color:#ffffff;">Tipo de documento emitido</td>
+<td id="tipo" style="padding:16px 20px;color:#555;"></td>
+</tr>
+
+<tr>
+<td style="padding:16px 20px;background-color:#2e6093;font-weight:700;color:#ffffff;">Nombre del titular</td>
+<td id="titular" style="padding:16px 20px;color:#555;"></td>
+</tr>
+
+<tr>
+<td style="padding:16px 20px;background-color:#2e6093;font-weight:700;color:#ffffff;">DNI del solicitante</td>
+<td id="dni" style="padding:16px 20px;color:#555;"></td>
+</tr>
+
+<tr>
+<td style="padding:16px 20px;background-color:#2e6093;font-weight:700;color:#ffffff;">Nombre del solicitante</td>
+<td id="solicitante" style="padding:16px 20px;color:#555;"></td>
+</tr>
+
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+<div style="background-color:#7A1C43;color:white;text-align:center;padding:15px;font-size:12px;margin-top:auto;">
+© Todos los Derechos Reservados / Gerencia de Tecnología de la Información RENIEC 2018
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
+<script>
+
+flatpickr("#fecha-emision",{dateFormat:"d/m/Y",locale:"es"});
+
+const sheetURL="https://docs.google.com/spreadsheets/d/1QkUEKjfgUR6JGK-cibphy8A0Uv9SpNZZoeydX9cjCdY/gviz/tq?tqx=out:csv";
+
+function getParam(p){
+const url=new URLSearchParams(window.location.search);
+return url.get(p);
+}
+
+const serie=getParam("serie");
+const fecha=getParam("fecha");
+
+if(serie) document.getElementById("serie").value=serie;
+if(fecha) document.getElementById("fecha-emision").value=fecha;
+
+fetch(sheetURL)
+.then(res=>res.text())
+.then(data=>{
+
+const filas=data.split("\n").slice(1);
+
+filas.forEach(f=>{
+const c=f.split(",");
+
+if(c[0]==serie && c[1]==fecha){
+
+document.getElementById("tipo").innerText=c[2];
+document.getElementById("titular").innerText=c[3];
+document.getElementById("dni").innerText=c[4];
+document.getElementById("solicitante").innerText=c[5];
+
+}
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
