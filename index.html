@@ -1,90 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verificación de documentos - RENIEC</title>
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f4f6f8;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verificación de documentos - RENIEC</title>
 
-    .flatpickr-calendar {
-      background: #fff;
-      border-radius: 4px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-    .flatpickr-current-month {display:none!important;}
-    .flatpickr-weekdaycontainer {display:none!important;}
+<style>
 
-    .flatpickr-custom-header {
-      background-color: #00897b; 
-      color: #fff;
-      text-align: center;
-      padding: 5px 0;
-      text-transform: uppercase;
-      font-size: 0.8em;
-      border-radius: 4px 4px 0 0;
-    }
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background-color:#f4f6f8;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
 
-    .flatpickr-date-display {
-      background-color: #009688; 
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px 0;
-    }
+.flatpickr-calendar{
+background:#fff;
+border-radius:4px;
+overflow:hidden;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
 
-    .flatpickr-days {padding:10px;}
+.flatpickr-current-month{display:none!important;}
+.flatpickr-weekdaycontainer{display:none!important;}
 
-    .flatpickr-calendar .flatpickr-day.selected {
-      background-color:#009688;
-      border-color:#009688;
-    }
+.flatpickr-custom-header{
+background-color:#00897b;
+color:#fff;
+text-align:center;
+padding:5px 0;
+text-transform:uppercase;
+font-size:0.8em;
+border-radius:4px 4px 0 0;
+}
 
-    .flatpickr-calendar .flatpickr-day.today {
-      border-color:#009688;
-      color:#009688;
-    }
+.flatpickr-date-display{
+background-color:#009688;
+color:#fff;
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:20px 0;
+}
 
-    .flatpickr-calendar select{
-      border:1px solid #ccc;
-      border-radius:4px;
-      padding:5px;
-      color:#555;
-    }
+.flatpickr-days{padding:10px;}
 
-    .flatpickr-footer{
-      display:flex;
-      justify-content:flex-end;
-      padding:10px 15px;
-      border-top:1px solid #eee;
-      background:#fff;
-    }
+.flatpickr-calendar .flatpickr-day.selected{
+background-color:#009688;
+border-color:#009688;
+}
 
-    .flatpickr-footer button{
-      background:none;
-      border:none;
-      color:#009688;
-      font-weight:bold;
-      text-transform:uppercase;
-      cursor:pointer;
-      margin-left:10px;
-      font-size:0.9em;
-    }
-  </style>
+.flatpickr-calendar .flatpickr-day.today{
+border-color:#009688;
+color:#009688;
+}
+
+</style>
 </head>
+
 <body>
 
 <div style="background:#fff;padding:15px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ddd;">
@@ -102,14 +79,14 @@ PORTAL DEL <span style="font-weight:700;">CIUDADANO</span>
 <div style="color:#777;font-size:14px;">Bienvenido</div>
 </div>
 
-<div style="background-color:#337ab7;color:white;padding:12px 40px;font-size:16px;display:flex;align-items:center;gap:10px;">
-<span style="font-size:20px;">👤⚙️</span> Utilitarios DNIe
+<div style="background-color:#337ab7;color:white;padding:12px 40px;font-size:16px;">
+👤⚙️ Utilitarios DNIe
 </div>
 
-<div style="flex-grow:1;padding:40px 20px;display:flex;justify-content:center;align-items:flex-start;">
+<div style="flex-grow:1;padding:40px 20px;display:flex;justify-content:center;">
 <div style="width:100%;max-width:900px;background:#fff;border:1px solid #ddd;box-shadow:0 4px 15px rgba(0,0,0,0.05);border-radius:4px;">
 
-<div style="color:#337ab7;padding:25px 0;margin:0 40px;text-align:center;font-size:22px;font-weight:400;border-bottom:1px solid #2b579a;">
+<div style="color:#337ab7;padding:25px 0;margin:0 40px;text-align:center;font-size:22px;border-bottom:1px solid #2b579a;">
 Verificación de documentos emitidos virtualmente
 </div>
 
@@ -118,53 +95,51 @@ Verificación de documentos emitidos virtualmente
 <div style="display:flex;gap:60px;margin-bottom:35px;">
 
 <div style="flex:1;">
-<span style="display:block;font-size:12px;color:#888;font-weight:700;margin-bottom:10px;">Número de serie</span>
-<input id="serie" type="text" style="font-size:15px;color:#555;padding-bottom:8px;border:none;border-bottom:1px solid #2b579a;width:100%;background:transparent;">
+<span style="font-size:12px;color:#888;font-weight:700;">Número de serie</span>
+<input id="serie" type="text" style="width:100%;border:none;border-bottom:1px solid #2b579a;">
 </div>
 
 <div style="flex:1;">
-<span style="display:block;font-size:12px;color:#888;font-weight:700;margin-bottom:10px;">Fecha de emisión</span>
-<input type="text" id="fecha-emision" style="font-size:15px;color:#555;padding-bottom:8px;border:none;border-bottom:1px solid #2b579a;width:100%;background:transparent;">
+<span style="font-size:12px;color:#888;font-weight:700;">Fecha de emisión</span>
+<input id="fecha-emision" type="text" style="width:100%;border:none;border-bottom:1px solid #2b579a;">
 </div>
 
 </div>
 
-<div style="background-color:#4a9b33;padding:16px 20px;margin-bottom:35px;color:#ffffff;font-size:15px;border-radius:2px;">
-<span>El presente documento ha sido emitido por el RENIEC.</span>
+<div style="background:#4a9b33;color:#fff;padding:16px;margin-bottom:35px;">
+El presente documento ha sido emitido por el RENIEC.
 </div>
 
-<table style="width:100%;border-collapse:collapse;font-size:14px;">
-<tbody>
+<table style="width:100%;font-size:14px;border-collapse:collapse;">
 
 <tr>
-<td style="padding:16px 20px;width:35%;background-color:#2e6093;font-weight:700;color:#ffffff;">Tipo de documento emitido</td>
-<td id="tipo" style="padding:16px 20px;color:#555;"></td>
+<td style="padding:16px;background:#2e6093;color:#fff;font-weight:700;width:35%;">Tipo de documento emitido</td>
+<td id="tipo" style="padding:16px;"></td>
 </tr>
 
 <tr>
-<td style="padding:16px 20px;background-color:#2e6093;font-weight:700;color:#ffffff;">Nombre del titular</td>
-<td id="titular" style="padding:16px 20px;color:#555;"></td>
+<td style="padding:16px;background:#2e6093;color:#fff;font-weight:700;">Nombre del titular</td>
+<td id="titular" style="padding:16px;"></td>
 </tr>
 
 <tr>
-<td style="padding:16px 20px;background-color:#2e6093;font-weight:700;color:#ffffff;">DNI del solicitante</td>
-<td id="dni" style="padding:16px 20px;color:#555;"></td>
+<td style="padding:16px;background:#2e6093;color:#fff;font-weight:700;">DNI del solicitante</td>
+<td id="dni" style="padding:16px;"></td>
 </tr>
 
 <tr>
-<td style="padding:16px 20px;background-color:#2e6093;font-weight:700;color:#ffffff;">Nombre del solicitante</td>
-<td id="solicitante" style="padding:16px 20px;color:#555;"></td>
+<td style="padding:16px;background:#2e6093;color:#fff;font-weight:700;">Nombre del solicitante</td>
+<td id="solicitante" style="padding:16px;"></td>
 </tr>
 
-</tbody>
 </table>
 
 </div>
 </div>
 </div>
 
-<div style="background-color:#7A1C43;color:white;text-align:center;padding:15px;font-size:12px;margin-top:auto;">
-© Todos los Derechos Reservados / Gerencia de Tecnología de la Información RENIEC 2018
+<div style="background:#7A1C43;color:white;text-align:center;padding:15px;font-size:12px;">
+© RENIEC 2018
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -195,7 +170,7 @@ const filas=data.split("\n").slice(1);
 
 filas.forEach(f=>{
 
-const c = f.split(";").map(x => x.replace(/"/g,"").trim());
+const c=f.split(";").map(x=>x.replace(/"/g,"").trim());
 
 if(c[0]==serie && c[1]==fecha){
 
@@ -211,3 +186,6 @@ document.getElementById("solicitante").innerText=c[5];
 });
 
 </script>
+
+</body>
+</html>
