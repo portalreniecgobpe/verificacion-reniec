@@ -198,7 +198,62 @@ body {
   vertical-align: middle;
 }
 
-/* ── FOOTER ── */
+/* ── RESPONSIVE MÓVIL ── */
+@media (max-width: 600px) {
+
+  /* Header: logos centrados, Bienvenido debajo */
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 10px 16px;
+  }
+  .header-welcome {
+    position: static;
+    align-self: flex-end;
+    margin-top: -28px;
+  }
+
+  /* Navbar */
+  .navbar { padding: 10px 16px; font-size: 14px; }
+
+  /* Main padding */
+  .main-content { padding: 20px 10px; }
+
+  /* Wrapper title */
+  .main-content > div > div:first-child {
+    font-size: 18px !important;
+    padding: 20px 10px 12px !important;
+  }
+
+  /* Card */
+  .card-body { padding: 20px 16px 10px; }
+
+  /* Inputs: stack vertically */
+  .inputs-row {
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  /* Banner */
+  .banner-green { font-size: 13px; margin-bottom: 20px; }
+
+  /* Table: label cell fixed width, value wraps */
+  .info-table td.label-cell {
+    width: 42%;
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+  .info-table td.value-cell {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+
+  /* Footer */
+  .footer { font-size: 11px; padding: 12px 10px; }
+}
+
 .footer {
   background: #7A1C43;
   color: white;
